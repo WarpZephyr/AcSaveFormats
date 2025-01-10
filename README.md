@@ -2,12 +2,12 @@
 A library for reading and writing Armored Core saves.  
 
 # Supported Games
-| Game                     |  PS3  |  Xbox 360  |
-| :----------------------- | :---: | :--------: |
-| Armored Core 4           |  [ ]  |    [ ]     |
-| Armored Core For Answer  |  [x]  |    [x]     |
-| Armored Core V           |  [ ]  |    [ ]     |
-| Armored Core Verdict Day |  [ ]  |    [ ]     |
+| Game                     |  Platforms                                         |
+| :----------------------- | :------------------------------------------------- |
+| Armored Core 4           | <ul><li>- [ ] PS3</li><li>- [ ] Xbox 360</li></ul> |
+| Armored Core For Answer  | <ul><li>- [x] PS3</li><li>- [x] Xbox 360</li></ul> |
+| Armored Core V           | <ul><li>- [ ] PS3</li><li>- [ ] Xbox 360</li></ul> |
+| Armored Core Verdict Day | <ul><li>- [ ] PS3</li><li>- [ ] Xbox 360</li></ul> |
 
 # Building
 This project requires the following libraries to be cloned alongside it.  

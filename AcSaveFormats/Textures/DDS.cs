@@ -9,7 +9,7 @@ namespace AcSaveFormats.Textures
     /// <summary>
     /// Parser for .dds texture file headers.
     /// </summary>
-    public class DDS
+    internal class DDS
     {
         #region Constants
 

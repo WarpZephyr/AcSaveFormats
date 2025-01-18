@@ -15,8 +15,8 @@ namespace AcSaveFormats.ACFA.Designs
 
         #region Properties
 
-        public ushort Width { get; set; }
-        public ushort Height { get; set; }
+        public ushort Width { get; private set; }
+        public ushort Height { get; private set; }
         public byte[] PixelData { get; private set; }
         public bool Xbox { get; set; }
 
@@ -33,8 +33,8 @@ namespace AcSaveFormats.ACFA.Designs
         internal Thumbnail(BinaryStreamReader br, bool xbox)
         {
             Xbox = xbox;
-            Width = br.ReadUInt16();
-            Height = br.ReadUInt16();
+            Width = br.AssertUInt16(256);
+            Height = br.AssertUInt16(128);
             br.AssertInt32(0);
             br.AssertInt32(0);
             int dataSize = br.AssertInt32(ThumbnailDataSize);
@@ -112,9 +112,24 @@ namespace AcSaveFormats.ACFA.Designs
 
         #endregion
 
+        #region Methods
+
+        public bool SetPixelData(byte[] bytes)
+        {
+            if (bytes.Length != ThumbnailDataSize)
+            {
+                return false;
+            }
+
+            PixelData = bytes;
+            return true;
+        }
+
+        #endregion
+
         #region DDS Methods
 
-        public DDS GetDDSHeader()
+        internal DDS GetDDSHeader()
         {
             var dds = new DDS();
             dds.Width = Width;

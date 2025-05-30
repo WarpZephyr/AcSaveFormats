@@ -70,6 +70,10 @@ namespace AcSaveFormats.ACFA
             ColorSets = new ColorSet[ColorSetCount];
             UserPalette = new Color[PaletteCount];
             Emblems = new Emblem[EmblemCount];
+            for (int i = 0; i < EmblemCount; i++)
+            {
+                Emblems[i] = new Emblem();
+            }
         }
 
         /// <summary>

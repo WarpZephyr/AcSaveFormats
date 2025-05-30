@@ -93,13 +93,30 @@ namespace AcSaveFormats.ACFA
 
             if (xbox)
             {
-                CreationTimeStamp = DateTime.FromFileTime(br.ReadInt64());
+                long fileTime = br.ReadInt64();
+
+                try
+                {
+                    CreationTimeStamp = DateTime.FromFileTime(fileTime);
+                }
+                catch
+                {
+                    CreationTimeStamp = DateTime.Now;
+                }
             }
             else
             {
                 long gregorianTime = br.ReadInt64();
                 long ticks = gregorianTime * 10;
-                CreationTimeStamp = new DateTime(ticks);
+
+                try
+                {
+                    CreationTimeStamp = new DateTime(ticks);
+                }
+                catch
+                {
+                    CreationTimeStamp = DateTime.Now;
+                }
             }
 
             byte categoryByte = br.ReadByte();

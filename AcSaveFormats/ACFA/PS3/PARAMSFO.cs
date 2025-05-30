@@ -256,7 +256,7 @@ namespace AcSaveFormats.ACFA.PS3
             {
                 bw.ReserveUInt16($"KeyOffset_{index}");
                 bw.WriteUInt16((ushort)Format);
-                
+
                 if (Format == DataFormat.UInt32)
                 {
                     bw.WriteUInt32(4);
@@ -339,7 +339,7 @@ namespace AcSaveFormats.ACFA.PS3
             /// <summary>
             /// UTF8 without null termination.
             /// </summary>
-            UTF8S = 0x0004, 
+            UTF8S = 0x0004,
 
             /// <summary>
             /// UTF8.

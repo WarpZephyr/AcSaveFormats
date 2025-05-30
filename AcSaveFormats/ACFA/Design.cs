@@ -263,7 +263,7 @@ namespace AcSaveFormats.ACFA
 
             public DesignParts()
             {
-                
+
             }
 
             internal DesignParts(BinaryStreamReader br)
@@ -402,7 +402,7 @@ namespace AcSaveFormats.ACFA
 
             public DesignTuning()
             {
-                
+
             }
 
             internal DesignTuning(BinaryStreamReader br)

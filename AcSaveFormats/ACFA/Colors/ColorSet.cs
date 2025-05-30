@@ -1,6 +1,5 @@
 ﻿using BinaryMemory;
 using System.Drawing;
-using System.IO;
 
 namespace AcSaveFormats.ACFA.Colors
 {

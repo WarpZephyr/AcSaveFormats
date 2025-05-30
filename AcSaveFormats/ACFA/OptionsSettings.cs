@@ -147,9 +147,9 @@ namespace AcSaveFormats.ACFA
         public enum AutoOptionFlags : byte
         {
             None = 0,
-            AutoSighting = 1<<7,
-            AutoBoost = 1<<6,
-            AutoSwitch = 1<<5
+            AutoSighting = 1 << 7,
+            AutoBoost = 1 << 6,
+            AutoSwitch = 1 << 5
         }
 
         public enum Radar : int

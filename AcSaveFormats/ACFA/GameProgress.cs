@@ -93,7 +93,7 @@ namespace AcSaveFormats.ACFA
 
             // Normal Rankings
             NormalRankings = new MissionRank[MissionCount];
-            for (int i = 0;i < MissionCount; i++)
+            for (int i = 0; i < MissionCount; i++)
                 NormalRankings[i] = br.ReadEnumSByte<MissionRank>();
 
             // Hard Rankings
@@ -306,7 +306,7 @@ namespace AcSaveFormats.ACFA
 
             public PartUnlock()
             {
-                
+
             }
 
             internal PartUnlock(BinaryStreamReader br)

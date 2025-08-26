@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
-namespace AcSaveFormats.ACFA.PS3
+namespace AcSaveFormats.PS3
 {
     public class PARAMSFO
     {

@@ -1,6 +1,7 @@
 ﻿using Edoke.IO;
 using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace AcSaveFormats.Textures
 {
@@ -9,7 +10,7 @@ namespace AcSaveFormats.Textures
     /// <summary>
     /// Parser for .dds texture file headers.
     /// </summary>
-    internal class DDS
+    public class DDS
     {
         #region Constants
 
@@ -59,13 +60,8 @@ namespace AcSaveFormats.Textures
             Caps = DDSCAPS.TEXTURE;
         }
 
-        /// <summary>
-        /// Read a DDS header from an array of bytes.
-        /// </summary>
-        public DDS(byte[] bytes)
+        private DDS(BinaryStreamReader br)
         {
-            using var br = new BinaryStreamReader(bytes, false);
-
             br.AssertASCII("DDS "); // dwMagic
             br.AssertInt32(0x7C); // dwSize
             Flags = (DDSD)br.ReadUInt32();
@@ -86,6 +82,28 @@ namespace AcSaveFormats.Textures
                 HeaderDXT10 = new HEADER_DXT10(br);
             else
                 HeaderDXT10 = null;
+        }
+
+        #endregion
+
+        #region Read
+
+        public static DDS Read(string path)
+        {
+            using var br = new BinaryStreamReader(path, false);
+            return new DDS(br);
+        }
+
+        public static DDS Read(byte[] bytes)
+        {
+            using var br = new BinaryStreamReader(bytes, false);
+            return new DDS(br);
+        }
+
+        public static DDS Read(Stream stream)
+        {
+            using var br = new BinaryStreamReader(stream, false, true);
+            return new DDS(br);
         }
 
         #endregion

@@ -50,7 +50,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
 
         internal PlayerData(BinaryStreamReader br)
         {
-            LynxName = br.ReadUTF16BigEndian(32);
+            LynxName = br.ReadUTF16BigEndian(32 * 2);
             Rank = br.ReadEnumSByte<TotalRank>();
             Completed = br.ReadByte();
             CollaredRank = br.ReadByte();

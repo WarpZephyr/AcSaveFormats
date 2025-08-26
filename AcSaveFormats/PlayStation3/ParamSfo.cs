@@ -138,7 +138,7 @@ namespace AcSaveFormats.PlayStation3
                 return false;
             }
 
-            string magic = br.GetASCII(0, 4);
+            string magic = br.GetASCII(0, 4, false);
             return magic == "\0PSF";
         }
 

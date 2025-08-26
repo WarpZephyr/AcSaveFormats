@@ -82,8 +82,8 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
 
             if (utf16)
             {
-                DesignName = br.ReadUTF16BigEndian(48);
-                DesignerName = br.ReadUTF16BigEndian(48);
+                DesignName = br.ReadUTF16BigEndian(48 * 2);
+                DesignerName = br.ReadUTF16BigEndian(48 * 2);
             }
             else
             {

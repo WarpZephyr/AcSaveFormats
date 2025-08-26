@@ -5,7 +5,7 @@ VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcSaveFormats", "AcSaveFormats\AcSaveFormats.csproj", "{8FB27276-E6E0-410A-A861-33B1BF3B6B78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryMemory", "..\BinaryMemory\BinaryMemory\BinaryMemory.csproj", "{91C1CE0F-5920-4A85-8150-3B60001679CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edoke", "..\Edoke\Edoke\Edoke.csproj", "{CC121821-EAAD-A644-3F31-00EF605F8BB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{8FB27276-E6E0-410A-A861-33B1BF3B6B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FB27276-E6E0-410A-A861-33B1BF3B6B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FB27276-E6E0-410A-A861-33B1BF3B6B78}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91C1CE0F-5920-4A85-8150-3B60001679CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91C1CE0F-5920-4A85-8150-3B60001679CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91C1CE0F-5920-4A85-8150-3B60001679CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91C1CE0F-5920-4A85-8150-3B60001679CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC121821-EAAD-A644-3F31-00EF605F8BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC121821-EAAD-A644-3F31-00EF605F8BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC121821-EAAD-A644-3F31-00EF605F8BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC121821-EAAD-A644-3F31-00EF605F8BB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

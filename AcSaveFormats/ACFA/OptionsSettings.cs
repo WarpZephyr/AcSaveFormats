@@ -1,5 +1,5 @@
 ﻿using AcSaveFormats.ACFA.Options;
-using BinaryMemory;
+using Edoke.IO;
 using System;
 
 namespace AcSaveFormats.ACFA
@@ -122,7 +122,7 @@ namespace AcSaveFormats.ACFA
             bw.WriteInt32(Unk90);
             bw.WriteInt32((int)RadarType);
             bw.WriteInt32(CockpitColorID);
-            bw.WriteFixedShiftJIS(Regulation, 16, 0);
+            bw.WriteShiftJIS(Regulation, 16, 0);
             bw.WriteBytes(UnkAC);
         }
 
@@ -134,9 +134,9 @@ namespace AcSaveFormats.ACFA
 
         public byte[] Write()
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

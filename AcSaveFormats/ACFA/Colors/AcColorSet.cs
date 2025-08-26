@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 using System.Drawing;
 
 namespace AcSaveFormats.ACFA.Colors
@@ -453,7 +453,7 @@ namespace AcSaveFormats.ACFA.Colors
             LegsMiddleLeftStabilizerPattern = br.ReadByte();
             LegsLowerRightStabilizerPattern = br.ReadByte();
             LegsLowerLeftStabilizerPattern = br.ReadByte();
-            EyeColor = br.ReadColorRGBA();
+            EyeColor = br.ReadRgba();
         }
 
         #endregion
@@ -562,7 +562,7 @@ namespace AcSaveFormats.ACFA.Colors
             bw.WriteByte(LegsMiddleLeftStabilizerPattern);
             bw.WriteByte(LegsLowerRightStabilizerPattern);
             bw.WriteByte(LegsLowerLeftStabilizerPattern);
-            bw.WriteColorRGBA(EyeColor);
+            bw.WriteRgba(EyeColor);
         }
 
         /// <summary>
@@ -581,9 +581,9 @@ namespace AcSaveFormats.ACFA.Colors
         /// <returns>A byte array.</returns>
         public byte[] Write()
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

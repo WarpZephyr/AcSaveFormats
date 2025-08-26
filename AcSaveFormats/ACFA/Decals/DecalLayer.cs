@@ -1,5 +1,5 @@
 ﻿using AcSaveFormats.ACFA.Emblems;
-using BinaryMemory;
+using Edoke.IO;
 using System.Numerics;
 
 namespace AcSaveFormats.ACFA.Decals

@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -96,13 +96,13 @@ namespace AcSaveFormats.ACFA.PS3
                         long textStartPos = bw.Position;
                         bw.WriteUTF8(parameter.Data, false);
                         bw.FillUInt32($"DataLength_{i}", (uint)(bw.Position - textStartPos));
-                        bw.WriteBytePattern((int)(parameter.DataMaxLength - parameter.Data.Length), 0);
+                        bw.WritePattern((int)(parameter.DataMaxLength - parameter.Data.Length), 0);
                         break;
                     case DataFormat.UTF8:
                         textStartPos = bw.Position;
                         bw.WriteUTF8(parameter.Data, true);
                         bw.FillUInt32($"DataLength_{i}", (uint)(bw.Position - textStartPos));
-                        bw.WriteBytePattern((int)(parameter.DataMaxLength - (parameter.Data.Length + 1)), 0);
+                        bw.WritePattern((int)(parameter.DataMaxLength - (parameter.Data.Length + 1)), 0);
                         break;
                     case DataFormat.UInt32:
                         bw.WriteUInt32(uint.Parse(parameter.Data));
@@ -121,9 +121,9 @@ namespace AcSaveFormats.ACFA.PS3
 
         public byte[] Write()
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

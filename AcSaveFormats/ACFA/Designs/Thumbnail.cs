@@ -1,5 +1,5 @@
 ﻿using AcSaveFormats.Textures;
-using BinaryMemory;
+using Edoke.IO;
 using System;
 using static AcSaveFormats.Textures.DDS;
 
@@ -98,16 +98,16 @@ namespace AcSaveFormats.ACFA.Designs
 
         public byte[] Write()
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw, Xbox);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         public byte[] Write(bool xbox)
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw, xbox);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -192,7 +192,7 @@ namespace AcSaveFormats.ACFA
                 bw.WriteUInt16(id);
             int remaining = MissionCount - StoryMissionIDs.Count;
             if (remaining > 0)
-                bw.WriteBytePattern(remaining * sizeof(ushort), 0); // Write unused ID space
+                bw.WritePattern(remaining * sizeof(ushort), 0); // Write unused ID space
 
             // Free Mission IDs
             if ((uint)FreeMissionIDs.Count > MissionCount)
@@ -202,7 +202,7 @@ namespace AcSaveFormats.ACFA
                 bw.WriteUInt16(id);
             remaining = MissionCount - FreeMissionIDs.Count;
             if (remaining > 0)
-                bw.WriteBytePattern(remaining * sizeof(ushort), 0); // Write unused ID space
+                bw.WritePattern(remaining * sizeof(ushort), 0); // Write unused ID space
 
             // Normal Rankings
             for (int i = 0; i < MissionCount; i++)
@@ -226,7 +226,7 @@ namespace AcSaveFormats.ACFA
                 part.Write(bw);
             remaining = ReservedPartUnlockCount - PartUnlocks.Count;
             if (remaining > 0)
-                bw.WriteBytePattern(remaining * Unsafe.SizeOf<PartUnlock>(), 0); // Write unused ID space
+                bw.WritePattern(remaining * Unsafe.SizeOf<PartUnlock>(), 0); // Write unused ID space
 
             // Design Unlocks
             if ((uint)DesignUnlocks.Count > ReservedDesignUnlockCount)
@@ -236,7 +236,7 @@ namespace AcSaveFormats.ACFA
                 bw.WriteUInt16(id);
             remaining = ReservedDesignUnlockCount - DesignUnlocks.Count;
             if (remaining > 0)
-                bw.WriteBytePattern(remaining * sizeof(ushort), 0); // Write unused ID space
+                bw.WritePattern(remaining * sizeof(ushort), 0); // Write unused ID space
 
             // Emblem Unlocks
             if ((uint)EmblemUnlocks.Count > ReservedEmblemUnlockCount)
@@ -246,7 +246,7 @@ namespace AcSaveFormats.ACFA
                 bw.WriteByte(id);
             remaining = ReservedEmblemUnlockCount - EmblemUnlocks.Count;
             if (remaining > 0)
-                bw.WriteBytePattern(remaining, 0); // Write unused ID space
+                bw.WritePattern(remaining, 0); // Write unused ID space
 
             // FRS Amount
             bw.WriteInt32(FrsAmount);
@@ -259,7 +259,7 @@ namespace AcSaveFormats.ACFA
                 bw.WriteByte(id);
             remaining = ReservedFrsUnlockCount - FrsUnlocks.Count;
             if (remaining > 0)
-                bw.WriteBytePattern(remaining, 0); // Write unused ID space
+                bw.WritePattern(remaining, 0); // Write unused ID space
 
             // Unknown
             bw.WriteInt32(Unk1B5C);
@@ -273,9 +273,9 @@ namespace AcSaveFormats.ACFA
 
         public byte[] Write()
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

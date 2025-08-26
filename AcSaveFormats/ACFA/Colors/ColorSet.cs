@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 using System.Drawing;
 
 namespace AcSaveFormats.ACFA.Colors
@@ -91,12 +91,12 @@ namespace AcSaveFormats.ACFA.Colors
         /// <param name="br">The stream reader.</param>
         internal ColorSet(BinaryStreamReader br)
         {
-            Main = br.ReadColorRGBA();
-            Sub = br.ReadColorRGBA();
-            Support = br.ReadColorRGBA();
-            Optional = br.ReadColorRGBA();
-            Joint = br.ReadColorRGBA();
-            Device = br.ReadColorRGBA();
+            Main = br.ReadRgba();
+            Sub = br.ReadRgba();
+            Support = br.ReadRgba();
+            Optional = br.ReadRgba();
+            Joint = br.ReadRgba();
+            Device = br.ReadRgba();
         }
 
         /// <summary>
@@ -105,12 +105,12 @@ namespace AcSaveFormats.ACFA.Colors
         /// <param name="bw">The stream writer.</param>
         internal readonly void Write(BinaryStreamWriter bw)
         {
-            bw.WriteColorRGBA(Main);
-            bw.WriteColorRGBA(Sub);
-            bw.WriteColorRGBA(Support);
-            bw.WriteColorRGBA(Optional);
-            bw.WriteColorRGBA(Joint);
-            bw.WriteColorRGBA(Device);
+            bw.WriteRgba(Main);
+            bw.WriteRgba(Sub);
+            bw.WriteRgba(Support);
+            bw.WriteRgba(Optional);
+            bw.WriteRgba(Joint);
+            bw.WriteRgba(Device);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 
 namespace AcSaveFormats.ACFA.Decals
 {

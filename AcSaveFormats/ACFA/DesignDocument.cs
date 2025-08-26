@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,7 +44,7 @@ namespace AcSaveFormats.ACFA
                 throw new InvalidDataException($"Invalid design count: {designCount}; Max: {ReservedDesignCount}");
 
             br.AssertUInt16(0);
-            br.AssertBytePattern(320, 0);
+            br.AssertPattern(320, 0);
 
             Designs = new List<Design>(designCount);
             for (int i = 0; i < designCount; i++)
@@ -94,7 +94,7 @@ namespace AcSaveFormats.ACFA
                 throw new InvalidOperationException($"Invalid design count: {Designs.Count}; Max: {ReservedDesignCount}");
             bw.WriteUInt16((ushort)Designs.Count);
             bw.WriteUInt16(0);
-            bw.WriteBytePattern(320, 0);
+            bw.WritePattern(320, 0);
 
             for (int i = 0; i < Designs.Count; i++)
             {
@@ -106,7 +106,7 @@ namespace AcSaveFormats.ACFA
             if (remaining > 0)
             {
                 int designSize = utf16 ? Design.FileSizeUTF16 : Design.FileSizeShiftJIS;
-                bw.WriteBytePattern(designSize * remaining, 0);
+                bw.WritePattern(designSize * remaining, 0);
             }
         }
 
@@ -124,16 +124,16 @@ namespace AcSaveFormats.ACFA
 
         public byte[] Write()
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw, UTF16, Xbox);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         public byte[] Write(bool utf16, bool xbox)
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw, utf16, xbox);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

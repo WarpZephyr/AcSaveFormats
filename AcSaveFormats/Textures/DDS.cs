@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 using System;
 using System.Diagnostics;
 
@@ -97,7 +97,7 @@ namespace AcSaveFormats.Textures
         /// </summary>
         public byte[] Write(byte[] pixelData)
         {
-            using var bw = new BinaryStreamWriter(false);
+            var bw = new BinaryStreamWriter(false);
 
             bw.WriteASCII("DDS ");
             bw.WriteInt32(0x7C);
@@ -122,7 +122,7 @@ namespace AcSaveFormats.Textures
                     throw new InvalidOperationException($"{nameof(HeaderDXT10)} was null when format is DX10.");
 
             bw.WriteBytes(pixelData);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

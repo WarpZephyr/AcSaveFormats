@@ -2,7 +2,7 @@
 using AcSaveFormats.ACFA.Decals;
 using AcSaveFormats.ACFA.Designs;
 using AcSaveFormats.ACFA.Emblems;
-using BinaryMemory;
+using Edoke.IO;
 using System;
 
 namespace AcSaveFormats.ACFA
@@ -169,13 +169,13 @@ namespace AcSaveFormats.ACFA
         {
             if (utf16)
             {
-                bw.WriteFixedUTF16BigEndian(DesignName, 48);
-                bw.WriteFixedUTF16BigEndian(DesignerName, 48);
+                bw.WriteUTF16BigEndian(DesignName, 48, 0);
+                bw.WriteUTF16BigEndian(DesignerName, 48, 0);
             }
             else
             {
-                bw.WriteFixedShiftJIS(DesignName, 48);
-                bw.WriteFixedShiftJIS(DesignerName, 48);
+                bw.WriteShiftJIS(DesignName, 48, 0);
+                bw.WriteShiftJIS(DesignerName, 48, 0);
             }
 
             if (xbox)
@@ -214,16 +214,16 @@ namespace AcSaveFormats.ACFA
 
         public byte[] Write()
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw, UTF16, Xbox);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         public byte[] Write(bool utf16, bool xbox)
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw, utf16, xbox);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

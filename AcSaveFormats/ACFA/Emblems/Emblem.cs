@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 using System;
 
 namespace AcSaveFormats.ACFA.Emblems
@@ -82,11 +82,11 @@ namespace AcSaveFormats.ACFA.Emblems
             switch (Type)
             {
                 case EmblemType.None:
-                    br.AssertBytePattern(128, 0);
+                    br.AssertPattern(128, 0);
                     break;
                 case EmblemType.Preset:
                     EmblemID = br.ReadUInt16();
-                    br.AssertBytePattern(126, 0);
+                    br.AssertPattern(126, 0);
                     break;
                 case EmblemType.Custom:
                     for (int i = 0; i < LayerCount; i++)
@@ -116,11 +116,11 @@ namespace AcSaveFormats.ACFA.Emblems
             switch (Type)
             {
                 case EmblemType.None:
-                    bw.WriteBytePattern(128, 0);
+                    bw.WritePattern(128, 0);
                     break;
                 case EmblemType.Preset:
                     bw.WriteUInt16(EmblemID);
-                    bw.WriteBytePattern(126, 0);
+                    bw.WritePattern(126, 0);
                     break;
                 case EmblemType.Custom:
                     for (int i = 0; i < LayerCount; i++)

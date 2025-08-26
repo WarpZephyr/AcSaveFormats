@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 using static AcSaveFormats.ACFA.PlayerData;
 
 namespace AcSaveFormats.ACFA.Xbox360
@@ -81,8 +81,8 @@ namespace AcSaveFormats.ACFA.Xbox360
         internal void Write(BinaryStreamWriter bw)
         {
             bw.WriteInt32(Index);
-            bw.WriteFixedUTF16BigEndian(LynxName, 32, 0);
-            bw.WriteFixedUTF16BigEndian(AcName, 48, 0);
+            bw.WriteUTF16BigEndian(LynxName, 32, 0);
+            bw.WriteUTF16BigEndian(AcName, 48, 0);
             bw.WriteBytes(UnkA4);
             bw.WriteSByte((sbyte)Rank);
             bw.WriteByte(Complete);
@@ -100,9 +100,9 @@ namespace AcSaveFormats.ACFA.Xbox360
 
         public byte[] Write()
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

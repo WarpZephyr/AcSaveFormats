@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 using System;
 
 namespace AcSaveFormats.ACFA.Emblems

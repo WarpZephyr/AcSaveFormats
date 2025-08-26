@@ -1,6 +1,6 @@
 ﻿using AcSaveFormats.ACFA.Colors;
 using AcSaveFormats.ACFA.Emblems;
-using BinaryMemory;
+using Edoke.IO;
 using System.Drawing;
 
 namespace AcSaveFormats.ACFA
@@ -95,7 +95,7 @@ namespace AcSaveFormats.ACFA
 
             for (int i = 0; i < PaletteCount; i++)
             {
-                UserPalette[i] = br.ReadColorRGBA();
+                UserPalette[i] = br.ReadRgba();
             }
 
             for (int i = 0; i < EmblemCount; i++)
@@ -150,7 +150,7 @@ namespace AcSaveFormats.ACFA
 
             for (int i = 0; i < PaletteCount; i++)
             {
-                bw.WriteColorRGBA(UserPalette[i]);
+                bw.WriteRgba(UserPalette[i]);
             }
 
             for (int i = 0; i < EmblemCount; i++)
@@ -175,9 +175,9 @@ namespace AcSaveFormats.ACFA
         /// <returns>A byte array.</returns>
         public byte[] Write()
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

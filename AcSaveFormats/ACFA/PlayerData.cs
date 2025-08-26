@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 
 namespace AcSaveFormats.ACFA
 {
@@ -57,7 +57,7 @@ namespace AcSaveFormats.ACFA
             OrcaRank = br.ReadByte();
             Coam = br.ReadInt32();
             PlayTimeSeconds = br.ReadSingle();
-            br.AssertBytePattern(256, 0);
+            br.AssertPattern(256, 0);
         }
 
         #endregion
@@ -82,14 +82,14 @@ namespace AcSaveFormats.ACFA
 
         internal void Write(BinaryStreamWriter bw)
         {
-            bw.WriteFixedUTF16BigEndian(LynxName, 32, 0);
+            bw.WriteUTF16BigEndian(LynxName, 32, 0);
             bw.WriteSByte((sbyte)Rank);
             bw.WriteByte(Completed);
             bw.WriteByte(CollaredRank);
             bw.WriteByte(OrcaRank);
             bw.WriteInt32(Coam);
             bw.WriteSingle(PlayTimeSeconds);
-            bw.WriteBytePattern(256, 0);
+            bw.WritePattern(256, 0);
         }
 
         public void Write(string path)
@@ -100,9 +100,9 @@ namespace AcSaveFormats.ACFA
 
         public byte[] Write()
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

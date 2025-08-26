@@ -1,4 +1,4 @@
-﻿using BinaryMemory;
+﻿using Edoke.IO;
 
 namespace AcSaveFormats.ACFA.Xbox360
 {
@@ -67,17 +67,17 @@ namespace AcSaveFormats.ACFA.Xbox360
             bw.WriteByte(Unk0F);
         }
 
-        public void Write(string path)
+        public readonly void Write(string path)
         {
             using var bw = new BinaryStreamWriter(path, true);
             Write(bw);
         }
 
-        public byte[] Write()
+        public readonly byte[] Write()
         {
-            using var bw = new BinaryStreamWriter(true);
+            var bw = new BinaryStreamWriter(true);
             Write(bw);
-            return bw.ToArray();
+            return bw.FinishBytes();
         }
 
         #endregion

@@ -1,8 +1,8 @@
-﻿using AcSaveFormats.ACFA.Emblems;
+﻿using AcSaveFormats.ArmoredCoreForAnswer.Emblems;
 using Edoke.IO;
 using System.Numerics;
 
-namespace AcSaveFormats.ACFA.Decals
+namespace AcSaveFormats.ArmoredCoreForAnswer.Decals
 {
     public class DecalLayer
     {

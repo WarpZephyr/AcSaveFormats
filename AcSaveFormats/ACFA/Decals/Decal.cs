@@ -1,6 +1,6 @@
 ﻿using Edoke.IO;
 
-namespace AcSaveFormats.ACFA.Decals
+namespace AcSaveFormats.ArmoredCoreForAnswer.Decals
 {
     public class Decal
     {

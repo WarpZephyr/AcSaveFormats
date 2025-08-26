@@ -3,7 +3,7 @@ using Edoke.IO;
 using System;
 using static AcSaveFormats.Textures.DDS;
 
-namespace AcSaveFormats.ACFA.Designs
+namespace AcSaveFormats.ArmoredCoreForAnswer.Designs
 {
     public class Thumbnail
     {

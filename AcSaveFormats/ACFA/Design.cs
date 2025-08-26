@@ -1,11 +1,11 @@
-﻿using AcSaveFormats.ACFA.Colors;
-using AcSaveFormats.ACFA.Decals;
-using AcSaveFormats.ACFA.Designs;
-using AcSaveFormats.ACFA.Emblems;
+﻿using AcSaveFormats.ArmoredCoreForAnswer.Colors;
+using AcSaveFormats.ArmoredCoreForAnswer.Decals;
+using AcSaveFormats.ArmoredCoreForAnswer.Designs;
+using AcSaveFormats.ArmoredCoreForAnswer.Emblems;
 using Edoke.IO;
 using System;
 
-namespace AcSaveFormats.ACFA
+namespace AcSaveFormats.ArmoredCoreForAnswer
 {
     public class Design
     {

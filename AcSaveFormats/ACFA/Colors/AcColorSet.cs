@@ -1,7 +1,7 @@
 ﻿using Edoke.IO;
 using System.Drawing;
 
-namespace AcSaveFormats.ACFA.Colors
+namespace AcSaveFormats.ArmoredCoreForAnswer.Colors
 {
     /// <summary>
     /// A colorset.

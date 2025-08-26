@@ -1,4 +1,4 @@
-﻿namespace AcSaveFormats.ACFA.Emblems
+﻿namespace AcSaveFormats.ArmoredCoreForAnswer.Emblems
 {
     /// <summary>
     /// A type which determines how the emblem is stored.

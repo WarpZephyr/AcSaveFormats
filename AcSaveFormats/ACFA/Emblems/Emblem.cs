@@ -1,7 +1,7 @@
 ﻿using Edoke.IO;
 using System;
 
-namespace AcSaveFormats.ACFA.Emblems
+namespace AcSaveFormats.ArmoredCoreForAnswer.Emblems
 {
     /// <summary>
     /// An emblem with customizable layers of image IDs or a single preset image ID.

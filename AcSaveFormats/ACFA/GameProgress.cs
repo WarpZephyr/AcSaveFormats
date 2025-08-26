@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 
-namespace AcSaveFormats.ACFA
+namespace AcSaveFormats.ArmoredCoreForAnswer
 {
     public class GameProgress
     {

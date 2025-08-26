@@ -1,6 +1,6 @@
 ﻿using Edoke.IO;
 
-namespace AcSaveFormats.ACFA
+namespace AcSaveFormats.ArmoredCoreForAnswer
 {
     public class PlayerData
     {

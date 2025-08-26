@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
-namespace AcSaveFormats.PS3
+namespace AcSaveFormats.PlayStation3
 {
-    public class PARAMSFO
+    public class ParamSfo
     {
         public Dictionary<string, Parameter> Parameters { get; set; }
         public FormatVersion Version { get; set; }
 
         #region Constructors
 
-        public PARAMSFO()
+        public ParamSfo()
         {
             Parameters = [];
             Version = new FormatVersion(1, 1, 0, 0);
         }
 
-        internal PARAMSFO(BinaryStreamReader br)
+        internal ParamSfo(BinaryStreamReader br)
         {
             br.BigEndian = false;
             br.AssertASCII("\0PSF");
@@ -38,16 +38,16 @@ namespace AcSaveFormats.PS3
 
         #region Read
 
-        public static PARAMSFO Read(string path)
+        public static ParamSfo Read(string path)
         {
             using var br = new BinaryStreamReader(path, true);
-            return new PARAMSFO(br);
+            return new ParamSfo(br);
         }
 
-        public static PARAMSFO Read(byte[] bytes)
+        public static ParamSfo Read(byte[] bytes)
         {
             using var br = new BinaryStreamReader(bytes, true);
-            return new PARAMSFO(br);
+            return new ParamSfo(br);
         }
 
         #endregion
@@ -158,12 +158,12 @@ namespace AcSaveFormats.PS3
 
         #region Is Read
 
-        public static bool IsRead(string path, [NotNullWhen(true)] PARAMSFO? result)
+        public static bool IsRead(string path, [NotNullWhen(true)] ParamSfo? result)
         {
             using var br = new BinaryStreamReader(path, true);
             if (Is(br))
             {
-                result = new PARAMSFO(br);
+                result = new ParamSfo(br);
                 return true;
             }
 
@@ -171,12 +171,12 @@ namespace AcSaveFormats.PS3
             return false;
         }
 
-        public static bool IsRead(byte[] bytes, [NotNullWhen(true)] PARAMSFO? result)
+        public static bool IsRead(byte[] bytes, [NotNullWhen(true)] ParamSfo? result)
         {
             using var br = new BinaryStreamReader(bytes, true);
             if (Is(br))
             {
-                result = new PARAMSFO(br);
+                result = new ParamSfo(br);
                 return true;
             }
 

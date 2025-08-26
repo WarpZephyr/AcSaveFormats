@@ -1,9 +1,9 @@
-﻿using AcSaveFormats.ACFA.Colors;
-using AcSaveFormats.ACFA.Emblems;
+﻿using AcSaveFormats.ArmoredCoreForAnswer.Colors;
+using AcSaveFormats.ArmoredCoreForAnswer.Emblems;
 using Edoke.IO;
 using System.Drawing;
 
-namespace AcSaveFormats.ACFA
+namespace AcSaveFormats.ArmoredCoreForAnswer
 {
     /// <summary>
     /// Paint save data.

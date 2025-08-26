@@ -1,7 +1,7 @@
 ﻿using Edoke.IO;
 using System;
 
-namespace AcSaveFormats.ACFA.Emblems
+namespace AcSaveFormats.ArmoredCoreForAnswer.Emblems
 {
     /// <summary>
     /// A layer for custom emblems.

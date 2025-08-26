@@ -1,7 +1,7 @@
 ﻿using Edoke.IO;
-using static AcSaveFormats.ACFA.PlayerData;
+using static AcSaveFormats.ArmoredCoreForAnswer.PlayerData;
 
-namespace AcSaveFormats.ACFA.Xbox360
+namespace AcSaveFormats.ArmoredCoreForAnswer.Xbox360
 {
     public class GameDataContent
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace AcSaveFormats.ACFA
+namespace AcSaveFormats.ArmoredCoreForAnswer
 {
     public class DesignDocument
     {

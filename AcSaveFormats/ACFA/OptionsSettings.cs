@@ -1,8 +1,8 @@
-﻿using AcSaveFormats.ACFA.Options;
+﻿using AcSaveFormats.ArmoredCoreForAnswer.Options;
 using Edoke.IO;
 using System;
 
-namespace AcSaveFormats.ACFA
+namespace AcSaveFormats.ArmoredCoreForAnswer
 {
     public class OptionsSettings
     {

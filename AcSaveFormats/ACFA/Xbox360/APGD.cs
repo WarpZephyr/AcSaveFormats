@@ -1,6 +1,6 @@
 ﻿using Edoke.IO;
 
-namespace AcSaveFormats.ACFA.Xbox360
+namespace AcSaveFormats.ArmoredCoreForAnswer.Xbox360
 {
     public class APGD
     {

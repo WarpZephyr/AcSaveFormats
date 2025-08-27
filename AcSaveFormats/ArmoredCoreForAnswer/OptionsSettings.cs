@@ -6,6 +6,14 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
 {
     public class OptionsSettings
     {
+        #region Constants
+
+        public const byte MaxVibration = 100;
+        public const byte MaxBrightness = 80;
+        public const byte MaxVolume = 80;
+
+        #endregion
+
         #region Properties
 
         public byte ControlType { get; set; }

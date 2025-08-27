@@ -18,7 +18,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer.Designs
         public ushort Width { get; private set; }
         public ushort Height { get; private set; }
         public byte[] PixelData { get; private set; }
-        public bool Xbox { get; set; }
+        public bool IsXbox360 { get; set; }
 
         #endregion
 
@@ -27,12 +27,12 @@ namespace AcSaveFormats.ArmoredCoreForAnswer.Designs
         public Thumbnail()
         {
             PixelData = new byte[ThumbnailDataSize];
-            Xbox = false;
+            IsXbox360 = false;
         }
 
         internal Thumbnail(BinaryStreamReader br, bool xbox)
         {
-            Xbox = xbox;
+            IsXbox360 = xbox;
             Width = br.AssertUInt16(256);
             Height = br.AssertUInt16(128);
             br.AssertInt32(0);
@@ -40,7 +40,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer.Designs
             int dataSize = br.AssertInt32(ThumbnailDataSize);
             PixelData = br.ReadBytes(dataSize);
 
-            if (Xbox)
+            if (IsXbox360)
             {
                 PixelData = DrSwizzler.Deswizzler.Xbox360Deswizzle(PixelData, Width, Height, DrSwizzler.DDS.DXEnums.DXGIFormat.BC1UNORM);
             }
@@ -87,7 +87,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer.Designs
         public void Write(string path)
         {
             using var bw = new BinaryStreamWriter(path, true);
-            Write(bw, Xbox);
+            Write(bw, IsXbox360);
         }
 
         public void Write(string path, bool xbox)
@@ -99,7 +99,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer.Designs
         public byte[] Write()
         {
             var bw = new BinaryStreamWriter(true);
-            Write(bw, Xbox);
+            Write(bw, IsXbox360);
             return bw.FinishBytes();
         }
 
@@ -129,7 +129,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer.Designs
 
         #region DDS Methods
 
-        internal DDS GetDDSHeader()
+        public DDS BuildDdsHeader()
         {
             var dds = new DDS();
             dds.Width = Width;
@@ -138,16 +138,19 @@ namespace AcSaveFormats.ArmoredCoreForAnswer.Designs
             dds.MipMapCount = 1;
             dds.Flags = DDSD.CAPS | DDSD.HEIGHT | DDSD.WIDTH | DDSD.PIXELFORMAT | DDSD.MIPMAPCOUNT | DDSD.LINEARSIZE;
 
-            var ddspf = new PIXELFORMAT();
-            ddspf.FourCC = "DXT1";
+            var ddspf = new PIXELFORMAT
+            {
+                FourCC = "DXT1"
+            };
+
             dds.DDSPixelFormat = ddspf;
             dds.Caps = DDSCAPS.TEXTURE;
             return dds;
         }
 
-        public byte[] GetDDSBytes()
+        public byte[] GetDdsBytes()
         {
-            return GetDDSHeader().Write(PixelData);
+            return BuildDdsHeader().Write(PixelData);
         }
 
         #endregion

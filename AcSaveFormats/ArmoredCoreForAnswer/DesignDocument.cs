@@ -19,8 +19,8 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
 
         public ushort Unk00 { get; set; }
         public List<Design> Designs { get; set; }
-        public bool UTF16 { get; set; }
-        public bool Xbox { get; set; }
+        public bool IsUtf16 { get; set; }
+        public bool IsXbox360 { get; set; }
 
         #endregion
 
@@ -28,15 +28,15 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
 
         public DesignDocument()
         {
-            UTF16 = true;
+            IsUtf16 = true;
             Unk00 = 450;
             Designs = [];
         }
 
         internal DesignDocument(BinaryStreamReader br, bool utf16, bool xbox)
         {
-            UTF16 = utf16;
-            Xbox = xbox;
+            IsUtf16 = utf16;
+            IsXbox360 = xbox;
             Unk00 = br.ReadUInt16();
             br.AssertUInt16(0);
             ushort designCount = br.ReadUInt16();
@@ -113,7 +113,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
         public void Write(string path)
         {
             using var bw = new BinaryStreamWriter(path, true);
-            Write(bw, UTF16, Xbox);
+            Write(bw, IsUtf16, IsXbox360);
         }
 
         public void Write(string path, bool utf16, bool xbox)
@@ -125,7 +125,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
         public byte[] Write()
         {
             var bw = new BinaryStreamWriter(true);
-            Write(bw, UTF16, Xbox);
+            Write(bw, IsUtf16, IsXbox360);
             return bw.FinishBytes();
         }
 

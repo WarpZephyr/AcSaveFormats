@@ -169,8 +169,8 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
         {
             if (utf16)
             {
-                bw.WriteUTF16BigEndian(DesignName, 48, 0);
-                bw.WriteUTF16BigEndian(DesignerName, 48, 0);
+                bw.WriteUTF16BigEndian(DesignName, 48 * 2, 0);
+                bw.WriteUTF16BigEndian(DesignerName, 48 * 2, 0);
             }
             else
             {

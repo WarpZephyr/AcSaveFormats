@@ -19,6 +19,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
         public const int ReservedDesignUnlockCount = 100;
         public const int ReservedEmblemUnlockCount = 64;
         public const int ReservedFrsUnlockCount = 248;
+        public const int MaxFrsCount = 442;
 
         #endregion
 

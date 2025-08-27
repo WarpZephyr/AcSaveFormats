@@ -27,7 +27,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
         public int Unk8C { get; set; }
         public int Unk90 { get; set; }
         public Radar RadarType { get; set; }
-        public int CockpitColorID { get; set; }
+        public int CockpitColorId { get; set; }
         public string Regulation { get; set; }
         public byte[] UnkAC { get; private set; }
 
@@ -49,7 +49,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
             VolumeEffects = 80;
             VolumeVoice = 80;
             RadarType = Radar.Normal;
-            CockpitColorID = 0;
+            CockpitColorId = 0;
             Regulation = "1.20"; // 16 bytes (including null terminator)
             UnkAC = new byte[32];
         }
@@ -75,7 +75,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
             Unk8C = br.ReadInt32();
             Unk90 = br.ReadInt32();
             RadarType = br.ReadEnumInt32<Radar>();
-            CockpitColorID = br.ReadInt32();
+            CockpitColorId = br.ReadInt32();
             Regulation = br.ReadShiftJIS(16);
             UnkAC = br.ReadBytes(32);
         }
@@ -121,7 +121,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
             bw.WriteInt32(Unk8C);
             bw.WriteInt32(Unk90);
             bw.WriteInt32((int)RadarType);
-            bw.WriteInt32(CockpitColorID);
+            bw.WriteInt32(CockpitColorId);
             bw.WriteShiftJIS(Regulation, 16, 0);
             bw.WriteBytes(UnkAC);
         }

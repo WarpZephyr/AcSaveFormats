@@ -137,13 +137,12 @@ namespace AcSaveFormats.ArmoredCoreForAnswer.Designs
             dds.PitchOrLinearSize = Math.Max(1, (Width + 3) / 4) * DXT1_BLOCKSIZE;
             dds.MipMapCount = 1;
             dds.Flags = DDSD.CAPS | DDSD.HEIGHT | DDSD.WIDTH | DDSD.PIXELFORMAT | DDSD.MIPMAPCOUNT | DDSD.LINEARSIZE;
-
-            var ddspf = new PIXELFORMAT
+            dds.DDSPixelFormat = new PIXELFORMAT
             {
+                Flags = DDPF.FOURCC,
                 FourCC = "DXT1"
             };
 
-            dds.DDSPixelFormat = ddspf;
             dds.Caps = DDSCAPS.TEXTURE;
             return dds;
         }

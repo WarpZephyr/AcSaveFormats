@@ -81,8 +81,8 @@ namespace AcSaveFormats.ArmoredCoreForAnswer.Xbox360
         internal void Write(BinaryStreamWriter bw)
         {
             bw.WriteInt32(Index);
-            bw.WriteUTF16BigEndian(LynxName, 32, 0);
-            bw.WriteUTF16BigEndian(AcName, 48, 0);
+            bw.WriteUTF16BigEndian(LynxName, 32 * 2, 0);
+            bw.WriteUTF16BigEndian(AcName, 48 * 2, 0);
             bw.WriteBytes(UnkA4);
             bw.WriteSByte((sbyte)Rank);
             bw.WriteByte(Complete);

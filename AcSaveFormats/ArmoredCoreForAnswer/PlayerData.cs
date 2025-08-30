@@ -33,7 +33,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
             LynxName = DefaultLynxName;
             Rank = TotalRank.None;
             CollaredRank = CollaredStartingRank;
-            OrcaRank = 0;
+            OrcaRank = OrcaStartingRank;
             Coam = IndependentStartingCoam;
             PlayTimeSeconds = 0.0f;
         }
@@ -43,7 +43,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
             LynxName = name;
             Rank = TotalRank.None;
             CollaredRank = CollaredStartingRank;
-            OrcaRank = 0;
+            OrcaRank = OrcaStartingRank;
             Coam = IndependentStartingCoam;
             PlayTimeSeconds = 0.0f;
         }
@@ -82,7 +82,7 @@ namespace AcSaveFormats.ArmoredCoreForAnswer
 
         internal void Write(BinaryStreamWriter bw)
         {
-            bw.WriteUTF16BigEndian(LynxName, 32, 0);
+            bw.WriteUTF16BigEndian(LynxName, 32 * 2, 0);
             bw.WriteSByte((sbyte)Rank);
             bw.WriteByte(Completed);
             bw.WriteByte(CollaredRank);
